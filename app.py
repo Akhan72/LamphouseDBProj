@@ -8,8 +8,8 @@ from functools import wraps
 
 app = Flask(__name__)
 
-# Secret key is required for sessions (you can change this string)
-app.secret_key = "super_secret_key_change_me"
+#Secret key required for sessions and is changeable
+app.secret_key = "super_secret_key"
 
 DATABASE = "Lamphouse.db"
 
@@ -28,11 +28,11 @@ def login_required(view_func):
         return view_func(*args, **kwargs)
     return wrapped_view
 
-# --------- ROUTES ---------
+# --------- ROUTES ---------------------------------------------------
 
 @app.route("/")
 def home():
-    # if logged in, go to dashboard; otherwise go to login
+    # if logged in, go to dashboard, otherwise go to login
     if "user_id" in session:
         return redirect(url_for("dashboard"))
     return redirect(url_for("login"))
@@ -74,7 +74,12 @@ def dashboard():
     # Example protected page
     return render_template("dashboard.html", username=session.get("username"))
 
-# --------- CLIENTS CRUD ---------
+#This is the Database Connection + the Clients list view from my table
+# I use a helper function to connect to the sqlite database: get_db_connection()
+# Then to query the Clients table and fetch all records ordered by last name and first name,
+#  the function list_clients() is defined. This also renders the clients.html template,
+# passing the retrieved clients data for display.
+# --------- CLIENTS CRUD -----------------------
 
 @app.route("/clients")
 @login_required
