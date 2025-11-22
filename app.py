@@ -162,6 +162,9 @@ def edit_client(client_id):
 
 @app.route("/clients/<int:client_id>/delete", methods=["POST"])
 @login_required
+#this delete_cleint() function deletes a client record from the Clients table
+# Essientially recieves a POST req from the delete button on the clients html page
+# then removes the record from the database based on the client_id passed in the URL
 def delete_client(client_id):
     conn = get_db_connection()
     conn.execute("DELETE FROM Clients WHERE client_id = ?", (client_id,))
