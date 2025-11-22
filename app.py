@@ -179,6 +179,11 @@ def delete_client(client_id):
 # can have access to these pages. 
 @app.route("/analytics")
 @login_required
+# Analytics page shows revenue per package using a bar chart.
+# SQL joins Invoices and Packages tables and groups by package_name
+# to calculate total revenue per package
+#SUM(subtotal + tax) = totla rev per package
+# The results are passed to the analytics.html template and coverted into python lists (before)
 def analytics():
     conn = get_db_connection()
     rows = conn.execute(
