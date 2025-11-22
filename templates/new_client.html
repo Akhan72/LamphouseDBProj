@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <title>New Client</title>
+</head>
+<body>
+    <h1>Add New Client</h1>
+
+    <p><a href="{{ url_for('list_clients') }}">Back to Clients</a></p>
+
+    <form method="post">
+        <label>First name:</label><br>
+        <input type="text" name="first_name" required><br><br>
+
+        <label>Last name:</label><br>
+        <input type="text" name="last_name" required><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email"><br><br>
+
+        <label>Phone:</label><br>
+        <input type="text" name="phone"><br><br>
+
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

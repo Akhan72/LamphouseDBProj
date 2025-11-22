@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <title>Edit Client</title>
+</head>
+<body>
+    <h1>Edit Client</h1>
+
+    <p><a href="{{ url_for('list_clients') }}">Back to Clients</a></p>
+
+    <form method="post">
+        <label>First name:</label><br>
+        <input type="text" name="first_name" value="{{ client['first_name'] }}" required><br><br>
+
+        <label>Last name:</label><br>
+        <input type="text" name="last_name" value="{{ client['last_name'] }}" required><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email" value="{{ client['email'] }}"><br><br>
+
+        <label>Phone:</label><br>
+        <input type="text" name="phone" value="{{ client['phone'] }}"><br><br>
+
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

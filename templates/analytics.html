@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <title>Analytics - Revenue by Package</title>
+</head>
+<body>
+    <h1>Revenue by Package</h1>
+
+    <p>
+        <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    </p>
+
+    <!-- Canvas for the chart -->
+    <canvas id="revenueChart" width="600" height="300"></canvas>
+
+    <!-- Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // Data passed from Flask (labels and totals)
+        const chartLabels = {{ labels | tojson }};
+        const chartData = {{ totals | tojson }};
+
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: chartLabels,
+                datasets: [{
+                    label: 'Total Revenue ($)',
+                    data: chartData
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

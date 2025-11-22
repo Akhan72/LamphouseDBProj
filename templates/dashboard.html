@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, Adil Khan!</h1>
+
+    <!-- Flash messages (optional) -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+          <li><strong>{{ category }}:</strong> {{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <p>You are now logged in.</p>
+
+    <ul>
+    <li><a href="{{ url_for('dashboard') }}">Dashboard (this page)</a></li>
+    <li><a href="{{ url_for('list_clients') }}">View Clients</a></li>
+    <li><a href="{{ url_for('analytics') }}">Analytics / Revenue Chart</a></li>
+    <li><a href="{{ url_for('logout') }}">Log out</a></li>
+    </ul>
+</body>
+</html>
