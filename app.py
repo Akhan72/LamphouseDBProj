@@ -18,6 +18,11 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
+# USER AUTHENTICATION:
+# To verify username/password from the Users table in the database I use login()
+# Then after the session is created, we need to have a clear session using logout()
+# The login_required decorator is used to protect routes that require authentication.
+
 # --------- AUTH HELPERS ---------
 def login_required(view_func):
     @wraps(view_func)
