@@ -96,6 +96,10 @@ def list_clients():
     conn.close()
     return render_template("clients.html", clients=clients)
 
+#new_client() handles both GET and POST requests for adding a new client.
+# On GET, it displays an empty form, On POST, it processes the form data - 
+#-inserts a new record into the Clients table, then redirects back to the clients list with a success message.
+
 @app.route("/clients/new", methods=["GET", "POST"])
 @login_required
 def new_client():
