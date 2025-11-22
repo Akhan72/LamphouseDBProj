@@ -125,6 +125,9 @@ def new_client():
 
 @app.route("/clients/<int:client_id>/edit", methods=["GET", "POST"])
 @login_required
+# Edit client details:
+# GET: loads the exisitng cleient data into the form for editing
+# POST: updates the client record in the database with the new data from the form
 def edit_client(client_id):
     conn = get_db_connection()
     client = conn.execute(
