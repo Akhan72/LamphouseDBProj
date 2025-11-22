@@ -164,6 +164,9 @@ def delete_client(client_id):
     flash("Client deleted.", "info")
     return redirect(url_for("list_clients"))
 
+#ROUTE protection:
+# The @login_required decorator that is shown on all routes, ensures that only logged in users
+# can have access to these pages. 
 @app.route("/analytics")
 @login_required
 def analytics():
